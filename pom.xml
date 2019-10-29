@@ -7,7 +7,7 @@
   <name>jersey-spring</name>
   <description>jersey-spring-jpa</description>
   <properties>
-		<springframework.version>4.3.5.RELEASE</springframework.version>
+		<springframework.version>5.2.0.RELEASE</springframework.version>
 		<hibernate.version>4.3.6.Final</hibernate.version>
 		<mysql.version>5.1.31</mysql.version>
 		<joda-time.version>2.3</joda-time.version>
