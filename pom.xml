@@ -11,7 +11,7 @@
 	<properties>
 		<spring.framework>4.3.18.RELEASE</spring.framework>
 		<mysql.version>8.0.11</mysql.version>
-		<serializer.version>2.8.1</serializer.version>
+		<serializer.version>2.9.10.1</serializer.version>
 		<spring.data>1.11.22.RELEASE</spring.data>
 		<hibernate.manager>4.3.5.Final</hibernate.manager>
 	</properties>
