@@ -3,8 +3,11 @@
 <body onload='document.loginForm.username.focus();'>
 	<h1>Spring Security - Login Form</h1>
 
-	<c:if test="${not empty errorMessge}">
-		<div style="color: red; font-weight: bold; margin: 30px 0px;">${errorMessge}</div>
+	<c:if test="${not empty error}">
+		<div style="color: red; font-weight: bold; margin: 30px 0px;">${error}</div>
+	</c:if>
+	<c:if test="${not empty message}">
+		<div style="color: green; font-weight: bold; margin: 30px 0px;">${message}</div>
 	</c:if>
 
 	<form name='login' action="login" method='POST'>
