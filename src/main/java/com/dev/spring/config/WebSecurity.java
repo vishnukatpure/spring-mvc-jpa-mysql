@@ -19,35 +19,18 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-		authenticationMgr.inMemoryAuthentication()
-        .passwordEncoder(passwordEncoder)
-        .withUser("user").password(passwordEncoder.encode("123456")).roles("USER")
-        .and()
-        .withUser("admin").password(passwordEncoder.encode("123456")).roles("USER", "ADMIN");
+		authenticationMgr.inMemoryAuthentication().passwordEncoder(passwordEncoder).withUser("user")
+				.password(passwordEncoder.encode("123456")).roles("USER").and().withUser("admin")
+				.password(passwordEncoder.encode("123456")).roles("USER", "ADMIN");
 
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		 http.authorizeRequests()
-	        .antMatchers("/login")
-	            .permitAll()
-	        .antMatchers("/**")
-	            .hasAnyRole("ADMIN", "USER")
-	        .and()
-	            .formLogin()
-	            .loginPage("/login")
-	            .defaultSuccessUrl("/home")
-	            .failureUrl("/login?error=true")
-	            .permitAll()
-	        .and()
-	            .logout()
-	            .logoutSuccessUrl("/login?logout=true")
-	            .invalidateHttpSession(true)
-	            .permitAll()
-	        .and()
-	            .csrf()
-	            .disable();
+	public void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests().antMatchers("/login").permitAll().antMatchers("/**").hasAnyRole("ADMIN", "USER").and()
+				.formLogin().loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error=true").permitAll()
+				.and().logout().logoutSuccessUrl("/login?logout=true").invalidateHttpSession(true).permitAll().and()
+				.httpBasic().and().csrf().disable();
 	}
 
 	@Bean
