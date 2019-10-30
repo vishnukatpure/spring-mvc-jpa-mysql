@@ -1,18 +1,18 @@
 package com.dev.spring.controller.login;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@RestController
 public class LoginController {
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 		ModelAndView model = new ModelAndView();
-		model.setViewName("welcomePage");
+		model.setViewName("index");
 		return model;
 	}
 
@@ -36,7 +36,7 @@ public class LoginController {
 			model.addObject("message", "Logged out from JournalDEV successfully.");
 		}
 
-		model.setViewName("loginPage");
+		model.setViewName("index");
 		return model;
 	}
 
