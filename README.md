@@ -5,7 +5,7 @@ Java,
 Spring-core, Spring-MVC ,Spring-Security, 
 MySql (for rest authentication & insert data to generate id),
 JPA(ORM),
-Html, CSS, Jstl
+Html, CSS, Jstl, Maven
 
 # Use below REST services for CRUD Operation
 # 1. CREATE Method:POST 
