@@ -9,14 +9,14 @@ Html, CSS, Jstl
 
 # Use below REST services for CRUD Operation
 # 1. CREATE Method:POST 
-http://localhost:8080/spring-boot-elastic-search/person
+http://localhost:8080/spring-boot-elastic-search/person </br>
 {
 	"lastName": "ooasssssss",
 	"firstName": "aaaaaaaa",
 	"age":"30"
 } 
 # 2. UPDATE Method:PUT 
-http://localhost:8080/spring-boot-elastic-search/person
+http://localhost:8080/spring-boot-elastic-search/person </br>
 {
 	"lastName": "ooasssssss", 
 	"firstName": "aaaaaaaa",
