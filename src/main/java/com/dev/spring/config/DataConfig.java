@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.flywaydb.core.Flyway;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -67,4 +68,14 @@ public class DataConfig {
 		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return transactionManager;
 	}
+
+	@Bean(initMethod = "migrate")
+	Flyway flyway() {
+		Flyway flyway = new Flyway();
+		flyway.setInitOnMigrate(true);
+		flyway.setLocations("classpath:/db/migrations");
+		flyway.setDataSource(dataSource());
+		return flyway;
+	}
+
 }
