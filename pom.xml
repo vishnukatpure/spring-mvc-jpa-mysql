@@ -20,7 +20,7 @@
 		<spring.framework>5.2.0.RELEASE</spring.framework>
 		<mysql.version>8.0.11</mysql.version>
 		<serializer.version>2.9.10.1</serializer.version>
-		<spring.data>1.11.22.RELEASE</spring.data>
+		<spring.data>1.11.23.RELEASE</spring.data>
 		<hibernate.manager>4.3.5.Final</hibernate.manager>
 		<spring.security.version>4.0.2.RELEASE</spring.security.version>
 		<Flyway.version>3.0</Flyway.version>
