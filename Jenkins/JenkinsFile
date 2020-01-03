@@ -14,7 +14,7 @@ pipeline {
          }  
       }
             
-      stage('Build') {
+      stage('Test & Build') {
          steps {
             // Run Maven on a Unix agent.
             //sh "mvn -DskipTests clean package"
@@ -26,7 +26,8 @@ pipeline {
       stage('Deploy'){
       	steps {
       		//Deploy to specific remote server using manager credentials
-      		deploy adapters: [tomcat8(credentialsId: '77ff7c2b-7aec-4f42-bb4c-13b6b4e2378e', path: '', url: 'http://localhost:9999')], contextPath: 'spring-mvc-jpa-mysql', war: 'target/jersey-spring-jpa-mysql.war'   
+      		deploy adapters: [tomcat8(credentialsId: '77ff7c2b-7aec-4f42-bb4c-13b6b4e2378e', path: '', 
+               url: 'http://localhost:9999')], contextPath: 'spring-mvc-jpa-mysql', war: 'target/spring-mvc-jpa-mysql.war'   
       	}
       }
    }
