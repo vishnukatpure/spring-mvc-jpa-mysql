@@ -35,9 +35,9 @@ pipeline {
       
       stage('Deploy'){
       	steps {
-      		//Deploy to specific remote server using manager credentials
-      		deploy adapters: [tomcat8(credentialsId: '77ff7c2b-7aec-4f42-bb4c-13b6b4e2378e', path: '', 
-               url: 'http://192.168.56.1:9999')], contextPath: 'spring-mvc-jpa-mysql', war: 'target/spring-mvc-jpa-mysql.war'   
+      		//Deploy to specific remote server using manager credentials 
+            deploy adapters: [tomcat8(credentialsId: '8afeb7c2-5908-48d2-ab75-d3f0507cb02f', path: '', 
+               url: 'http://192.168.56.1:9999')], contextPath: 'spring-mvc-jpa-mysql', war: 'target/spring-mvc-jpa-mysql'   
       	}
       }
    }
