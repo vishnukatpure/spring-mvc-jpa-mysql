@@ -8,6 +8,7 @@ JPA(ORM),
 Html, CSS, Jstl, Maven, Flywaydb Librery
 
 # Use below REST services for CRUD Operation
+# for every rest service need Authentication check into database for username & password
 # 1. CREATE Method:POST 
 http://localhost:8080/spring-mvc-jpa-mysql/person </br>
 {
