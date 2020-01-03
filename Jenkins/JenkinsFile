@@ -14,15 +14,25 @@ pipeline {
          }  
       }
             
-      stage('Test & Build') {
+      stage('Build') { 
          steps {
             // Run Maven on a Unix agent.
-            //sh "mvn -DskipTests clean package"
+            //sh "mvn -Dmaven.test.failure.ignore=false clean package"
 
             //To run Maven on a Windows agent, use
-            bat "mvn -Dmaven.test.failure.ignore=false clean package"
+            bat "mvn -DskipTests clean package"
          }        
       }
+      stage('Test') { 
+         steps {
+            // Run Maven on a Unix agent.
+            //sh "mvn test"
+
+            //To run Maven on a Windows agent, use
+            bat "mvn test"
+         }        
+      }
+      
       stage('Deploy'){
       	steps {
       		//Deploy to specific remote server using manager credentials
