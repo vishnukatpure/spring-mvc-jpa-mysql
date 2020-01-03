@@ -9,6 +9,14 @@
 	<name>Spring Data JPA Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
+		<!-- For build -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<org.apache.maven.plugins.version>2.3.2</org.apache.maven.plugins.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.executable>false</maven.compiler.executable>
+		
+		<!-- For Dependencies -->
 		<spring.framework>5.2.0.RELEASE</spring.framework>
 		<mysql.version>8.0.11</mysql.version>
 		<serializer.version>2.9.10.1</serializer.version>
@@ -103,11 +111,55 @@
 			<artifactId>flyway-core</artifactId>
 			<version>${Flyway.version}</version>
 		</dependency>
+		<!-- Junit -->
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 
 	</dependencies>
 
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${org.apache.maven.plugins.version}</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<excludeDefaultDirectories>true</excludeDefaultDirectories>
+					<filesets>
+						<fileset>
+							<directory>${project.build.directory}</directory>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<testFailureIgnore>false</testFailureIgnore>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
