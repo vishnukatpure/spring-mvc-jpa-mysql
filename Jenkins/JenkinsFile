@@ -1,0 +1,33 @@
+pipeline {
+   agent any
+
+   tools {
+      // Install the Maven version configured as "M3" and add it to the path.
+      maven "maven"
+   }
+
+   stages {
+      stage('Clone'){
+         steps {
+            // Get some code from a GitHub repository
+            git 'https://github.com/vishnukatpure/spring-mvc-jpa-mysql.git'
+         }  
+      }
+            
+      stage('Build') {
+         steps {
+            // Run Maven on a Unix agent.
+            //sh "mvn -DskipTests clean package"
+
+            //To run Maven on a Windows agent, use
+            bat "mvn -Dmaven.test.failure.ignore=false clean package"
+         }        
+      }
+      stage('Deploy'){
+      	steps {
+      		//Deploy to specific remote server using manager credentials
+      		deploy adapters: [tomcat8(credentialsId: '77ff7c2b-7aec-4f42-bb4c-13b6b4e2378e', path: '', url: 'http://localhost:9999')], contextPath: 'spring-mvc-jpa-mysql', war: 'target/jersey-spring-jpa-mysql.war'   
+      	}
+      }
+   }
+}
