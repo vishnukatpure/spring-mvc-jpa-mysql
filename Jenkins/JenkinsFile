@@ -17,7 +17,7 @@ pipeline {
       stage('SonarQube analysis') { 
          steps {
             // Run Maven on a Unix agent.
-            sh "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql -Dsonar.host.url=http://192.168.43.180:9000 -Dsonar.login=dd73f217d7d9cf6ad0084feda724079f199dd575"
+            sh "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql -Dsonar.host.url=http://localhost:9000 -Dsonar.login=dd73f217d7d9cf6ad0084feda724079f199dd575"
             //To run Maven on a Windows agent, use
             //bat "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar"
          }        
