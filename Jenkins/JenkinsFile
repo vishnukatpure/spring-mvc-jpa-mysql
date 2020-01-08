@@ -14,15 +14,6 @@ pipeline {
          }  
       }
       
-      stage('SonarQube analysis') { 
-         steps {
-            // Run Maven on a Unix agent.
-            sh "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql -Dsonar.host.url=http://localhost:9000 -Dsonar.login=dd73f217d7d9cf6ad0084feda724079f199dd575"
-            //To run Maven on a Windows agent, use
-            //bat "mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar"
-         }        
-      }
-      
       stage('Build') { 
          steps {
             // Run Maven on a Unix agent.
@@ -32,6 +23,16 @@ pipeline {
             //bat "mvn -DskipTests clean package"
          }        
       }
+      
+      stage('SonarQube analysis') { 
+         steps {
+            // Run Maven on a Unix agent.
+            sh "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql -Dsonar.host.url=http://192.168.106.61:9000 -Dsonar.login=ca8c590e14ce5269175948a10171c810c699553e"
+            //To run Maven on a Windows agent, use
+            //bat "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql -Dsonar.host.url=http://192.168.106.61:9000 -Dsonar.login=ca8c590e14ce5269175948a10171c810c699553e"
+         }        
+      }
+      
       stage('Test') { 
          steps {
             // Run Maven on a Unix agent.
