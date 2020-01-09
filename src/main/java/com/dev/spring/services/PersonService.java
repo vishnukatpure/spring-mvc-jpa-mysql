@@ -44,4 +44,8 @@ public class PersonService {
 	public boolean updatePerson(Person person) {
 		return personRepository.save(person) != null;
 	}
+
+	public Person aopTesting() {
+		throw new NullPointerException();
+	}
 }

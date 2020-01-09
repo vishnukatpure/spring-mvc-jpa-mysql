@@ -24,6 +24,11 @@ public class PersonController {
 	public @ResponseBody Person getAllUsers(@PathVariable Long id) {
 		return personService.getById(id);
 	}
+	
+	@RequestMapping(value = "/person/aop/testing", method = RequestMethod.GET)
+	public @ResponseBody Person aopTesting() {
+		return personService.aopTesting();
+	}
 
 	@RequestMapping(value = "/personByName/{name}", method = RequestMethod.GET)
 	public List<Person> getPersoneByName(@PathVariable String name) {
