@@ -46,6 +46,6 @@ public class PersonService {
 	}
 
 	public Person aopTesting() {
-		throw new NullPointerException();
+		throw new RuntimeException("in AOP runtime exception");
 	}
 }
