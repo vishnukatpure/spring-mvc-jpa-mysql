@@ -25,13 +25,13 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @PropertySource("classpath:database.properties")
 public class DataConfig {
 
-	private final String PROPERTY_DRIVER = "driver";
-	private final String PROPERTY_URL = "url";
-	private final String PROPERTY_USERNAME = "user";
-	private final String PROPERTY_PASSWORD = "password";
-	private final String PROPERTY_SHOW_SQL = "hibernate.show_sql";
-	private final String PROPERTY_DIALECT = "hibernate.dialect";
-	private final String PROPERTY_DDML = "hibernate.hbm2ddl.auto";
+	private static final String PROPERTY_DRIVER = "driver";
+	private static final String PROPERTY_URL = "url";
+	private static final String PROPERTY_USERNAME = "user";
+	private static final String PROPERTY_PASS_WORD = "pass_word";
+	private static final String PROPERTY_SHOW_SQL = "hibernate.show_sql";
+	private static final String PROPERTY_DIALECT = "hibernate.dialect";
+	private static final String PROPERTY_DDML = "hibernate.hbm2ddl.auto";
 
 	@Autowired
 	Environment environment;
@@ -51,7 +51,7 @@ public class DataConfig {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setUrl(environment.getProperty(PROPERTY_URL));
 		ds.setUsername(environment.getProperty(PROPERTY_USERNAME));
-		ds.setPassword(environment.getProperty(PROPERTY_PASSWORD));
+		ds.setPassword(environment.getProperty(PROPERTY_PASS_WORD));
 		ds.setDriverClassName(environment.getProperty(PROPERTY_DRIVER));
 		return ds;
 	}

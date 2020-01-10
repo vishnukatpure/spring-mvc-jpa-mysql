@@ -1,5 +1,6 @@
 package com.dev.spring.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,13 +37,31 @@ public class UserService {
 	}
 
 	@Transactional
-	public boolean addUser(User User) {
-		return userRepository.save(User) != null;
+	public User addUser(User User) {
+		return userRepository.save(User);
 	}
 
 	@Transactional
 	public boolean updateUser(User User) {
 		return userRepository.save(User) != null;
+	}
+
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
+
+	public User addUser(String firstName, String lastName, String email, String sex, String password) {
+
+		User user = new User();
+		user.setCreateDate(new Date());
+		user.setUpdatedDate(new Date());
+		user.setEmail(email);
+		user.setFirstName(firstName);
+		user.setLastName(lastName);
+		user.setSex(sex);
+		user.setPassword(password);
+
+		return addUser(user);
 	}
 
 }
