@@ -1,33 +1,45 @@
 package com.dev.spring.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.dev.spring.dto.PersonDTO;
+import com.dev.spring.dto.ResponseDTO;
 import com.dev.spring.model.Person;
 import com.dev.spring.repository.PersonRepository;
+import com.dev.spring.service.generic.GenericCRUDService;
 
 @Service
-public class PersonService {
+public class PersonService extends GenericCRUDService {
 
 	@Autowired
 	PersonRepository<Person> personRepository;
 
 	@Transactional
-	public List<Person> getAllPersons() {
-		return (List<Person>) personRepository.findAll();
+	public ResponseDTO getAllPersons() {
+		List<PersonDTO> dto = new ArrayList<>();
+		((List<Person>) personRepository.findAll()).forEach(ob -> {
+			dto.add(modelMapper.map(ob, PersonDTO.class));
+		});
+		return bindResponse(dto);
 	}
 
 	@Transactional
-	public List<Person> findByName(String name) {
-		return personRepository.findByFirstName(name);
+	public ResponseDTO findByName(String name) {
+		List<PersonDTO> dto = new ArrayList<>();
+		((List<Person>) personRepository.findByFirstName(name)).forEach(ob -> {
+			dto.add(modelMapper.map(ob, PersonDTO.class));
+		});
+		return bindResponse(dto);
 	}
 
 	@Transactional
-	public Person getById(Long id) {
-		return personRepository.findOne(id);
+	public ResponseDTO getById(Long id) {
+		return bindResponse(modelMapper.map(personRepository.findOne(id), PersonDTO.class));
 	}
 
 	@Transactional

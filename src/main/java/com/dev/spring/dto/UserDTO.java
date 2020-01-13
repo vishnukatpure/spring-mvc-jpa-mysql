@@ -1,6 +1,6 @@
 package com.dev.spring.dto;
 
-public class UserModal {
+public class UserDTO {
 
 	private String firstName;
 	private String lastName;

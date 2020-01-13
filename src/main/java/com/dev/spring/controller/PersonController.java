@@ -1,7 +1,5 @@
 package com.dev.spring.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dev.spring.dto.ResponseDTO;
 import com.dev.spring.model.Person;
 import com.dev.spring.services.PersonService;
 
@@ -21,22 +20,22 @@ public class PersonController {
 	PersonService personService;
 
 	@RequestMapping(value = "/person/{id}", method = RequestMethod.GET)
-	public @ResponseBody Person getAllUsers(@PathVariable Long id) {
+	public @ResponseBody ResponseDTO getAllUsers(@PathVariable Long id) {
 		return personService.getById(id);
 	}
-	
+
 	@RequestMapping(value = "/person/aop/testing", method = RequestMethod.GET)
 	public @ResponseBody Person aopTesting() {
 		return personService.aopTesting();
 	}
 
 	@RequestMapping(value = "/personByName/{name}", method = RequestMethod.GET)
-	public List<Person> getPersoneByName(@PathVariable String name) {
+	public ResponseDTO getPersoneByName(@PathVariable String name) {
 		return personService.findByName(name);
 	}
 
 	@RequestMapping(value = "/person", method = RequestMethod.GET)
-	public List<Person> getAll() {
+	public ResponseDTO getAll() {
 		return personService.getAllPersons();
 	}
 
