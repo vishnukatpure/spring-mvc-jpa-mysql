@@ -58,6 +58,6 @@ public class PersonService extends GenericCRUDService {
 	}
 
 	public Person aopTesting() {
-		throw new RuntimeException("in AOP runtime exception");
+		throw new NullPointerException("in AOP runtime exception");
 	}
 }

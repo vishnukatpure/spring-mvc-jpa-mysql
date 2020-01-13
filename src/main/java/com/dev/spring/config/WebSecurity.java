@@ -24,10 +24,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder authenticationMgr) throws Exception {
-		/*authenticationMgr.inMemoryAuthentication().passwordEncoder(passwordEncoder).withUser("user")
-				.password(passwordEncoder.encode("123456")).roles("USER").and().withUser("admin")
-				.password(passwordEncoder.encode("123456")).roles("USER", "ADMIN");*/
-
 		authenticationMgr.jdbcAuthentication().dataSource(dataSource)
 				.usersByUsernameQuery("select username, password, enabled  from users where username=?")
 				.authoritiesByUsernameQuery("select username, authority from authorities where username=?")
