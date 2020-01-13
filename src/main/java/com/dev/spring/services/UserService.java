@@ -36,20 +36,17 @@ public class UserService {
 		userRepository.delete(UserId);
 	}
 
-	@Transactional
-	public User addUser(User User) {
-		return userRepository.save(User);
-	}
+	
 
 	@Transactional
-	public boolean updateUser(User User) {
-		return userRepository.save(User) != null;
+	public boolean updateUser(User user) {
+		return userRepository.save(user) != null;
 	}
 
 	public User findByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
-
+	@Transactional
 	public User addUser(String firstName, String lastName, String email, String sex, String password) {
 
 		User user = new User();
@@ -61,7 +58,7 @@ public class UserService {
 		user.setSex(sex);
 		user.setPassword(password);
 
-		return addUser(user);
+		return userRepository.save(user);
 	}
 
 }

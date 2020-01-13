@@ -6,8 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,21 +14,21 @@ import org.springframework.web.servlet.ModelAndView;
 @RestController
 public class LoginController {
 
-	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	@GetMapping(value = { "/" })
 	public ModelAndView welcomePage() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("index");
 		return model;
 	}
 
-	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	@GetMapping(value = { "/home" })
 	public ModelAndView homePage() {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("home");
 		return model;
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@GetMapping(value = "/login")
 	public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout, HttpServletRequest request) {
 		request.getSession().invalidate();
@@ -47,7 +46,7 @@ public class LoginController {
 		return model;
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@GetMapping(value = "/logout")
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth != null) {

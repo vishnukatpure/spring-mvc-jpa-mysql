@@ -1,15 +1,9 @@
 package com.dev.spring.dto;
 
-import java.io.Serializable;
-
 import com.dev.spring.enums.StatusEnum;
 
-public class ResponseDTO implements Serializable {
+public class ResponseDTO {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private StatusEnum status;
 	private String message;
 	private Object object;

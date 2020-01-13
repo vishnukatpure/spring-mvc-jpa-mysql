@@ -48,13 +48,15 @@ public class PersonService extends GenericCRUDService {
 	}
 
 	@Transactional
-	public ResponseDTO addPerson(Person person) {
-		return bindResponse(modelMapper.map(personRepository.save(person),PersonDTO.class));
+	public ResponseDTO addPerson(PersonDTO personDto) {
+		Person person = modelMapper.map(personDto, Person.class);
+		return bindResponse(modelMapper.map(personRepository.save(person), PersonDTO.class));
 	}
 
 	@Transactional
-	public ResponseDTO updatePerson(Person person) {
-		return bindResponse(modelMapper.map(personRepository.save(person),PersonDTO.class));
+	public ResponseDTO updatePerson(PersonDTO personDto) {
+		Person person = modelMapper.map(personDto, Person.class);
+		return bindResponse(modelMapper.map(personRepository.save(person), PersonDTO.class));
 	}
 
 	public Person aopTesting() {

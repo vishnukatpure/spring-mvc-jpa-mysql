@@ -3,6 +3,7 @@ package com.dev.spring.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,14 +23,14 @@ public class UserResource {
 
 	@RequestMapping(value = { "/user-json-meta" }, method = RequestMethod.GET)
 	public UserDTO getUser() {
-		UserDTO UserDTO = new UserDTO();
-		UserDTO.setEmail("jajfaddf");
-		UserDTO.setFirstName("jayaram");
-		UserDTO.setLastName("poks");
-		UserDTO.setPassword("passwd");
-		UserDTO.setSex("male");
-		UserDTO.setUserId("101");
-		return UserDTO;
+		UserDTO userDTO = new UserDTO();
+		userDTO.setEmail("jajfaddf");
+		userDTO.setFirstName("jayaram");
+		userDTO.setLastName("poks");
+		userDTO.setPassword("passwd");
+		userDTO.setSex("male");
+		userDTO.setUserId("101");
+		return userDTO;
 	}
 
 	@RequestMapping(value = { "/user-info/{userId}" }, method = RequestMethod.GET)
@@ -39,16 +40,16 @@ public class UserResource {
 
 		UserStatusDTO userStatus = new UserStatusDTO();
 		User user = userService.findByUsername(userId);
-		UserDTO UserDTO = new UserDTO();
+		UserDTO userDTO = new UserDTO();
 		if (user != null) {
 			userStatus.setStatus(200);
 			userStatus.setMessage("User info");
-			UserDTO.setEmail(user.getEmail());
-			UserDTO.setFirstName(user.getFirstName());
-			UserDTO.setLastName(user.getLastName());
-			UserDTO.setSex(user.getSex());
-			UserDTO.setUserId(userId);
-			userStatus.setUser(UserDTO);
+			userDTO.setEmail(user.getEmail());
+			userDTO.setFirstName(user.getFirstName());
+			userDTO.setLastName(user.getLastName());
+			userDTO.setSex(user.getSex());
+			userDTO.setUserId(userId);
+			userStatus.setUser(userDTO);
 		} else {
 			userStatus.setStatus(205);
 			userStatus.setMessage("User info");
@@ -56,20 +57,15 @@ public class UserResource {
 		return userStatus;
 	}
 
-	@RequestMapping(value = { "/create-user" }, method = RequestMethod.POST)
-	public UserStatusDTO createUser(@RequestBody UserDTO UserDTO) {
-		System.out.println("create User:" + UserDTO.getEmail());
-		User user = null;
+	@PostMapping(value = { "/create-user" })
+	public UserStatusDTO createUser(@RequestBody UserDTO userDTO) {
+		System.out.println("create User:" + userDTO.getEmail());
 		UserStatusDTO status = new UserStatusDTO();
 		try {
-			user = userService.addUser(UserDTO.getFirstName(), UserDTO.getLastName(), UserDTO.getEmail(),
-					UserDTO.getSex(), UserDTO.getPassword());
-			UserDTO.setEmail(user.getEmail());
-			UserDTO.setFirstName(user.getFirstName());
-			UserDTO.setLastName(user.getLastName());
-			UserDTO.setSex(user.getSex());
-			UserDTO.setUserId(user.getUsername());
-			status.setUser(UserDTO);
+			User user = userService.addUser(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),
+					userDTO.getSex(), userDTO.getPassword());
+			userDTO.setUserId(user.getUsername());
+			status.setUser(userDTO);
 			status.setMessage("User Created Successfully");
 
 		} catch (Exception e) {
