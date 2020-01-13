@@ -2,11 +2,10 @@ package com.dev.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dev.spring.dto.UserDTO;
@@ -21,7 +20,7 @@ public class UserResource {
 	@Qualifier("userService")
 	private UserService userService;
 
-	@RequestMapping(value = { "/user-json-meta" }, method = RequestMethod.GET)
+	@GetMapping(value = { "/user-json-meta" })
 	public UserDTO getUser() {
 		UserDTO userDTO = new UserDTO();
 		userDTO.setEmail("jajfaddf");
@@ -33,10 +32,8 @@ public class UserResource {
 		return userDTO;
 	}
 
-	@RequestMapping(value = { "/user-info/{userId}" }, method = RequestMethod.GET)
+	@GetMapping(value = { "/user-info/{userId}" })
 	public UserStatusDTO getUser(@PathVariable("userId") String userId) {
-
-		System.out.println("user-info:userId" + userId);
 
 		UserStatusDTO userStatus = new UserStatusDTO();
 		User user = userService.findByUsername(userId);
@@ -59,7 +56,6 @@ public class UserResource {
 
 	@PostMapping(value = { "/create-user" })
 	public UserStatusDTO createUser(@RequestBody UserDTO userDTO) {
-		System.out.println("create User:" + userDTO.getEmail());
 		UserStatusDTO status = new UserStatusDTO();
 		try {
 			User user = userService.addUser(userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail(),

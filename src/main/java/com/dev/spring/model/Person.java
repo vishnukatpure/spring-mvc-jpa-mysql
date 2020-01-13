@@ -22,9 +22,6 @@ public class Person {
 	@Column(name = "last_name")
 	private String lastName;
 
-	public Person() {
-	}
-
 	public Long getId() {
 		return id;
 	}

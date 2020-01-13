@@ -26,17 +26,17 @@ public class AuthoritiesService {
 	}
 
 	@Transactional
-	public void deleteAuthorities(Long AuthoritiesId) {
-		authoritiesRepository.delete(AuthoritiesId);
+	public void deleteAuthorities(Long authoritiesId) {
+		authoritiesRepository.delete(authoritiesId);
 	}
 
 	@Transactional
-	public boolean addAuthorities(Authorities Authorities) {
-		return authoritiesRepository.save(Authorities) != null;
+	public boolean addAuthorities(Authorities authorities) {
+		return authoritiesRepository.save(authorities) != null;
 	}
 
 	@Transactional
-	public boolean updateAuthorities(Authorities Authorities) {
-		return authoritiesRepository.save(Authorities) != null;
+	public boolean updateAuthorities(Authorities authorities) {
+		return authoritiesRepository.save(authorities) != null;
 	}
 }

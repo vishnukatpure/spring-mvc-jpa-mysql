@@ -22,18 +22,15 @@ public class PersonService extends GenericCRUDService {
 	@Transactional
 	public ResponseDTO getAllPersons() {
 		List<PersonDTO> dto = new ArrayList<>();
-		((List<Person>) personRepository.findAll()).forEach(ob -> {
-			dto.add(modelMapper.map(ob, PersonDTO.class));
-		});
+		personRepository.findAll().forEach(ob -> dto.add(modelMapper.map(ob, PersonDTO.class)));
+
 		return bindResponse(dto);
 	}
 
 	@Transactional
 	public ResponseDTO findByName(String name) {
 		List<PersonDTO> dto = new ArrayList<>();
-		((List<Person>) personRepository.findByFirstName(name)).forEach(ob -> {
-			dto.add(modelMapper.map(ob, PersonDTO.class));
-		});
+		personRepository.findByFirstName(name).forEach(ob -> dto.add(modelMapper.map(ob, PersonDTO.class)));
 		return bindResponse(dto);
 	}
 
@@ -56,6 +53,7 @@ public class PersonService extends GenericCRUDService {
 	@Transactional
 	public ResponseDTO updatePerson(PersonDTO personDto) {
 		Person person = modelMapper.map(personDto, Person.class);
+		person.setFirstName("");
 		return bindResponse(modelMapper.map(personRepository.save(person), PersonDTO.class));
 	}
 
