@@ -13,40 +13,44 @@ pipeline {
             git 'https://github.com/vishnukatpure/spring-mvc-jpa-mysql.git'
          }  
       }
-      
+     
       stage('Build') { 
          steps {
             // Run Maven on a Unix agent.
-            sh "mvn -DskipTests clean package"
+            //sh "mvn -DskipTests clean package"
 
             //To run Maven on a Windows agent, use
-            //bat "mvn -DskipTests clean package"
-         }        
-      }
-      
-      stage('SonarQube analysis') { 
-         steps {
-            // Run Maven on a Unix agent.
-            sh "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql -Dsonar.host.url=http://192.168.106.61:9000 -Dsonar.login=ca8c590e14ce5269175948a10171c810c699553e"
-            //To run Maven on a Windows agent, use
-            //bat "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql -Dsonar.host.url=http://192.168.106.61:9000 -Dsonar.login=ca8c590e14ce5269175948a10171c810c699553e"
+            bat "mvn -DskipTests clean package"
          }        
       }
       
       stage('Test') { 
          steps {
             // Run Maven on a Unix agent.
-            sh "mvn test"
+            //sh "mvn test"
 
             //To run Maven on a Windows agent, use
-            //bat "mvn test"
+            bat "mvn test"
+         }        
+      }
+     
+      stage('SonarQube analysis') { 
+         steps {
+            // Run Maven on a Unix agent.
+            /* sh "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql \
+                -Dsonar.host.url=http://192.168.106.61:9000 \
+                -Dsonar.login=ca8c590e14ce5269175948a10171c810c699553e" */
+            //To run Maven on a Windows agent, use
+            bat "mvn sonar:sonar -Dsonar.projectKey=spring-mvc-jpa-mysql \
+                -Dsonar.host.url=http://192.168.106.61:9000 \
+                -Dsonar.login=ca8c590e14ce5269175948a10171c810c699553e"
          }        
       }
       
       stage('Deploy'){
       	steps {
       		//Deploy to specific remote server using manager credentials 
-            deploy adapters: [tomcat8(credentialsId: '8afeb7c2-5908-48d2-ab75-d3f0507cb02f', path: '', 
+            deploy adapters: [tomcat8(credentialsId: '80e84b96-5f83-4256-abf6-ad175b705a55', path: '', 
                url: 'http://192.168.106.51:9999')], contextPath: 'spring-mvc-jpa-mysql', war: 'target/spring-mvc-jpa-mysql.war'   
       	}
       }
