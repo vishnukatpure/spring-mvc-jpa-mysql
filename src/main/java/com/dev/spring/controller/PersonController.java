@@ -46,12 +46,12 @@ public class PersonController {
 	}
 
 	@RequestMapping(value = "/person", method = RequestMethod.POST)
-	public HttpStatus insertPersone(@RequestBody Person person) {
-		return personService.addPerson(person) ? HttpStatus.CREATED : HttpStatus.BAD_REQUEST;
+	public ResponseDTO insertPersone(@RequestBody Person person) {
+		return personService.addPerson(person);
 	}
 
 	@RequestMapping(value = "/person", method = RequestMethod.PUT)
-	public HttpStatus updatePerson(@RequestBody Person person) {
-		return personService.updatePerson(person) ? HttpStatus.ACCEPTED : HttpStatus.BAD_REQUEST;
+	public ResponseDTO updatePerson(@RequestBody Person person) {
+		return personService.updatePerson(person);
 	}
 }

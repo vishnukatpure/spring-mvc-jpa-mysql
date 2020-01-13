@@ -48,13 +48,13 @@ public class PersonService extends GenericCRUDService {
 	}
 
 	@Transactional
-	public boolean addPerson(Person person) {
-		return personRepository.save(person) != null;
+	public ResponseDTO addPerson(Person person) {
+		return bindResponse(modelMapper.map(personRepository.save(person),PersonDTO.class));
 	}
 
 	@Transactional
-	public boolean updatePerson(Person person) {
-		return personRepository.save(person) != null;
+	public ResponseDTO updatePerson(Person person) {
+		return bindResponse(modelMapper.map(personRepository.save(person),PersonDTO.class));
 	}
 
 	public Person aopTesting() {
