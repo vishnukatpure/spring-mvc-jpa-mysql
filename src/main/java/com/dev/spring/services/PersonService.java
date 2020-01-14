@@ -11,7 +11,7 @@ import com.dev.spring.dto.PersonDTO;
 import com.dev.spring.dto.ResponseDTO;
 import com.dev.spring.model.Person;
 import com.dev.spring.repository.PersonRepository;
-import com.dev.spring.service.generic.GenericCRUDService;
+import com.dev.spring.services.generic.GenericCRUDService;
 
 @Service
 public class PersonService extends GenericCRUDService {
