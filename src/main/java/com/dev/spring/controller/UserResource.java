@@ -1,7 +1,6 @@
 package com.dev.spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,8 +15,7 @@ import com.dev.spring.services.UserService;
 @RestController
 public class UserResource {
 
-	@Autowired(required = true)
-	@Qualifier("userService")
+	@Autowired
 	private UserService userService;
 
 	@GetMapping(value = { "/user-json-meta" })

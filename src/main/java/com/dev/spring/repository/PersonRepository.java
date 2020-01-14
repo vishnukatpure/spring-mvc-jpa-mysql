@@ -2,9 +2,11 @@ package com.dev.spring.repository;
 
 import java.util.List;
 
-import com.dev.spring.model.Person;
-import com.dev.spring.repository.generic.GenericRepository;
+import org.springframework.data.repository.CrudRepository;
 
-public interface PersonRepository<P> extends GenericRepository<P> {
+import com.dev.spring.model.Person;
+
+public interface PersonRepository<P> extends CrudRepository<Person, Long> {
+
 	List<Person> findByFirstName(String firstName);
 }

@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.dev.spring.model.User;
 
-public interface UserRepository<P> extends CrudRepository<P, Long> {
+public interface UserRepository<P> extends CrudRepository<User, Long> {
 
 	List<User> findByFirstName(String firstName);
 

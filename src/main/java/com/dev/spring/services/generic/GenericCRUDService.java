@@ -1,19 +1,15 @@
 package com.dev.spring.services.generic;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dev.spring.dto.ResponseDTO;
 import com.dev.spring.enums.StatusEnum;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
-public abstract class GenericCRUDService {
+@Service
+public class GenericCRUDService {
 
-	@Autowired
-	public ObjectMapper mapper;
-
-	@Autowired
-	public ModelMapper modelMapper;
+	public ModelMapper modelMapper = new ModelMapper();
 
 	public ResponseDTO bindResponse(Object dto) {
 		return new ResponseDTO().message("Success").object(dto).status(StatusEnum.SUCCESS);
