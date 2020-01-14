@@ -2,18 +2,14 @@ package com.dev.spring.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Entity
 @Table(name = "people")
-public class Person {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+@EnableJpaAuditing
+public class Person extends EntityBase {
 
 	@Column(name = "age")
 	private Integer age;
@@ -21,14 +17,6 @@ public class Person {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public Integer getAge() {
 		return age;
@@ -56,7 +44,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Person{" + "id=" + id + ", age=" + age + ", firstName='" + firstName + '\'' + ", lastName='" + lastName
-				+ '\'' + '}';
+		return "Person{" + "id=" + getId() + ", age=" + age + ", firstName='" + firstName + '\'' + ", lastName='"
+				+ lastName + '\'' + '}';
 	}
 }

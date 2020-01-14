@@ -1,21 +1,15 @@
 package com.dev.spring.model;
 
-import java.io.Serializable;
-import java.util.Date;
-
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @Table(name = "users")
 @Entity
-public class User implements Serializable {
+@EnableJpaAuditing
+public class User extends EntityBase {
 
-	private static final long serialVersionUID = 1020230L;
-
-	@Id
 	private String username;
 	private String firstName;
 	private String lastName;
@@ -23,12 +17,6 @@ public class User implements Serializable {
 	private String email;
 	private String password;
 	private boolean enabled;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date updatedDate;
 
 	public String getUsername() {
 		return username;
@@ -84,26 +72,6 @@ public class User implements Serializable {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
-
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }
