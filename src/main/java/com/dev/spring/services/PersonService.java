@@ -17,7 +17,7 @@ import com.dev.spring.services.generic.GenericCRUDService;
 public class PersonService extends GenericCRUDService {
 
 	@Autowired
-	PersonRepository<Person> personRepository;
+	PersonRepository personRepository;
 
 	@Transactional
 	public ResponseDTO getAllPersons() {

@@ -13,7 +13,7 @@ import com.dev.spring.repository.AuthoritiesRepository;
 public class AuthoritiesService {
 
 	@Autowired
-	AuthoritiesRepository<Authorities> authoritiesRepository;
+	AuthoritiesRepository authoritiesRepository;
 
 	@Transactional
 	public List<Authorities> getAllAuthoritiess() {

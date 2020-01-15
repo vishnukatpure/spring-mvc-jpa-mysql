@@ -14,7 +14,7 @@ import com.dev.spring.repository.UserRepository;
 public class UserService {
 
 	@Autowired
-	UserRepository<User> userRepository;
+	UserRepository userRepository;
 
 	@Transactional
 	public List<User> getAllUsers() {

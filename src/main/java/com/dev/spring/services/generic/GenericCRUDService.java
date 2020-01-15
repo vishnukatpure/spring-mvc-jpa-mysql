@@ -7,11 +7,12 @@ import com.dev.spring.dto.ResponseDTO;
 import com.dev.spring.enums.StatusEnum;
 
 @Service
-public class GenericCRUDService {
+public abstract class GenericCRUDService {
 
 	public ModelMapper modelMapper = new ModelMapper();
 
 	public ResponseDTO bindResponse(Object dto) {
 		return new ResponseDTO().message("Success").object(dto).status(StatusEnum.SUCCESS);
 	}
+
 }
