@@ -17,7 +17,7 @@
 		<maven.compiler.executable>false</maven.compiler.executable>
 
 		<!-- For Dependencies -->
-		<spring.framework>5.2.0.RELEASE</spring.framework>
+		<spring.framework>5.3.19</spring.framework>
 		<mysql.version>8.0.16</mysql.version>
 		<serializer.version>2.9.10.7</serializer.version>
 		<spring.data>1.11.23.RELEASE</spring.data>
