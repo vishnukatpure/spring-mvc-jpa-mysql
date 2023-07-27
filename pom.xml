@@ -18,8 +18,9 @@
 
 		<!-- For Dependencies -->
 		<spring.framework>5.2.22.RELEASE</spring.framework>
+		<spring.security>5.2.0.RELEASE</spring.security>
 		<mysql.version>8.0.28</mysql.version>
-		<serializer.version>2.12.7.1</serializer.version>
+		<serializer.version>2.9.10.1</serializer.version>
 		<spring.data>1.11.23.RELEASE</spring.data>
 		<hibernate.manager>4.3.5.Final</hibernate.manager>
 		<spring.security.version>4.0.2.RELEASE</spring.security.version>
@@ -49,12 +50,12 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
-			<version>${spring.framework}</version>
+			<version>${spring.security}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-			<version>${spring.framework}</version>
+			<version>${spring.security}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
