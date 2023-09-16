@@ -28,12 +28,12 @@ public class UserService {
 
 	@Transactional
 	public User getById(Long id) {
-		return userRepository.findOne(id);
+		return userRepository.findById(id).get();
 	}
 
 	@Transactional
 	public void deleteUser(Long userId) {
-		userRepository.delete(userId);
+		userRepository.deleteById(userId);
 	}
 
 	

@@ -22,12 +22,12 @@ public class AuthoritiesService {
 
 	@Transactional
 	public Authorities getById(Long id) {
-		return authoritiesRepository.findOne(id);
+		return authoritiesRepository.findById(id).get();
 	}
 
 	@Transactional
 	public void deleteAuthorities(Long authoritiesId) {
-		authoritiesRepository.delete(authoritiesId);
+		authoritiesRepository.deleteById(authoritiesId);
 	}
 
 	@Transactional

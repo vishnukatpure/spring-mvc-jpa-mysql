@@ -36,12 +36,12 @@ public class PersonService extends GenericCRUDService {
 
 	@Transactional
 	public ResponseDTO getById(Long id) {
-		return bindResponse(modelMapper.map(personRepository.findOne(id), PersonDTO.class));
+		return bindResponse(modelMapper.map(personRepository.findById(id).get(), PersonDTO.class));
 	}
 
 	@Transactional
 	public void deletePerson(Long personId) {
-		personRepository.delete(personId);
+		personRepository.deleteById(personId);
 	}
 
 	@Transactional
